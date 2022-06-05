@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.music.model.Artist;
+import com.example.music.model.Song;
 
 @Repository("artistServiceDAO")
 public class ArtistServiceDAOImpl implements ArtistServiceDAO{
@@ -42,5 +43,26 @@ public class ArtistServiceDAOImpl implements ArtistServiceDAO{
 			e.printStackTrace();
 		}
 		return artist;
+	}
+
+	@Override
+	public Artist addArtist(Artist artist) {
+		jdbcTemplate.update(
+				"INSERT INTO Artist (Artist_name, Date_of_birth, Bio, User_id)VALUES (?,?,?,?)",
+				new Object[] {artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio(), artist.getUser_id()});
+		return artist;
+	}
+
+	@Override
+	public Artist updateArtist(int id, Artist artist) {
+		jdbcTemplate.update(
+				"UPDATE Artist set Artist_name = ?, Date_of_birth = ?, Bio = ?, User_id = ? where id = ?",
+				new Object[] { artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio(), artist.getUser_id()});
+		return artist;
+	}
+
+	@Override
+	public void deleteArtist(int id) {
+		jdbcTemplate.update("DELETE from Artist where id = ?", new Object[] { id });		
 	}
 }

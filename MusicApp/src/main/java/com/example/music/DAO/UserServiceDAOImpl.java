@@ -13,14 +13,14 @@ import org.springframework.stereotype.Repository;
 import com.example.music.model.User;
 
 @Repository("userServiceDAO")
-public class UserServiceDAOImpl implements UserServiceDAO{
+public class UserServiceDAOImpl implements UserServiceDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	
+
 	@Override
 	public List<User> getAllUsers() {
 		List<User> users = null;
@@ -42,5 +42,26 @@ public class UserServiceDAOImpl implements UserServiceDAO{
 			e.printStackTrace();
 		}
 		return user;
+	}
+
+	@Override
+	public User addUser(User user) {
+		jdbcTemplate.update(
+				"INSERT INTO User (name, User_email, Password, Date_of_birth, Security_question, Security_answer) VALUES (?,?,?,?,?,?)",
+				new Object[] { user.getName(), user.getUserEmail(), user.getPassword(), user.getDateOfBirth(), user.getSecurityQuestion(), user.getSecurityAnswer() });
+		return user;
+	}
+
+	@Override
+	public User updateUser(int id, User user) {
+		jdbcTemplate.update(
+				"UPDATE User set name = ?, User_email = ?, Date_of_birth = ?, Security_question = ?, Security_answer = ? where id = ?",
+				new Object[] { user.getName(), user.getUserEmail(), user.getDateOfBirth(), user.getSecurityQuestion(), user.getSecurityAnswer()});
+		return user;
+	}
+
+	@Override
+	public void deleteUser(int id) {
+		jdbcTemplate.update("DELETE from User where id = ?", new Object[] { id });
 	}
 }

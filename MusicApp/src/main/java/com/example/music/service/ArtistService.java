@@ -8,4 +8,10 @@ public interface ArtistService {
 	public List<Artist> getAllArtists();
 	
 	public Artist getArtist(int id);
+	
+	public Artist addArtist(Artist artist);
+	
+	public Artist updateArtist(int id, Artist artist);
+	
+	public void deleteArtist(int id);
 }

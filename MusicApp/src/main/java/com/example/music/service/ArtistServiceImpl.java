@@ -24,4 +24,21 @@ public class ArtistServiceImpl implements ArtistService {
 		Artist artist = artistServiceDAO.getArtist(id);
 		return artist;
 	}
+
+	@Override
+	public Artist addArtist(Artist artist) {
+		artistServiceDAO.addArtist(artist);
+		return artist;
+	}
+
+	@Override
+	public Artist updateArtist(int id, Artist artist) {
+		artistServiceDAO.updateArtist(id, artist);
+		return artist;
+	}
+
+	@Override
+	public void deleteArtist(int id) {
+		artistServiceDAO.deleteArtist(id);
+	}
 }

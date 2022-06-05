@@ -42,7 +42,6 @@ public class musicController {
 		return songService.getSong(id);
 	}
 	
-
 	@RequestMapping(value = "/songs", method = RequestMethod.POST, headers = "Accept=application/json")
 	public Song addSong(@RequestBody Song song) throws ParseException {
 		
@@ -70,6 +69,21 @@ public class musicController {
 		return userService.getUser(id);
 	}
 	
+	@RequestMapping(value = "/users", method = RequestMethod.POST, headers = "Accept=application/json")
+	public User addUser(@RequestBody User user) throws ParseException {
+		return userService.addUser(user);
+	}
+
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+	public User updateUser(@RequestBody User user, @PathVariable("id") int id) {
+		return userService.updateUser(id, user);
+	}
+
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+	public void deleteUser(@PathVariable("id") int id) {
+		userService.deleteUser(id);
+	}
+	
 	@RequestMapping(value = "/artists", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Artist> getArtists() {
 		List<Artist> listOfArtists = artistService.getAllArtists();
@@ -80,4 +94,20 @@ public class musicController {
 	public Artist getArtist(@PathVariable int id) {
 		return artistService.getArtist(id);
 	}
+	
+	@RequestMapping(value = "/artists", method = RequestMethod.POST, headers = "Accept=application/json")
+	public Artist addArtist(@RequestBody Artist artist) throws ParseException {
+		return artistService.addArtist(artist);
+	}
+
+	@RequestMapping(value = "/artists/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+	public Artist updateArtist(@RequestBody Artist artist, @PathVariable("id") int id) {
+		return artistService.updateArtist(id, artist);
+	}
+
+	@RequestMapping(value = "/artists/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+	public void deleteArtist(@PathVariable("id") int id) {
+		artistService.deleteArtist(id);
+	}
+	
 }

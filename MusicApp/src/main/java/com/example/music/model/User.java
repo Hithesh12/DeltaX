@@ -70,6 +70,10 @@ public class User{
 		this.user_email = user_email;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
