@@ -25,7 +25,7 @@ public class SongRatingServiceDAOImpl implements SongRatingServiceDAO {
 	public SongRating getRating(int id) {
 		SongRating songRating = null;
 		try {
-			songRating = jdbcTemplate.queryForObject("SELECT * FROM User WHERE Rating_id = ?", new Object[] { id },
+			songRating = jdbcTemplate.queryForObject("SELECT * FROM SongRating WHERE Rating_id = ?", new Object[] { id },
 					new BeanPropertyRowMapper<SongRating>(SongRating.class));
 		} catch (DataAccessException e) {
 			e.printStackTrace();
@@ -37,7 +37,8 @@ public class SongRatingServiceDAOImpl implements SongRatingServiceDAO {
 	public List<SongRating> getAllRatings() {
 		List<SongRating> songRatings = null;
 		try {
-			songRatings = jdbcTemplate.query("SELECT * from SongRating", new BeanPropertyRowMapper<SongRating>(SongRating.class));
+			songRatings = jdbcTemplate.query("SELECT * from SongRating",
+					new BeanPropertyRowMapper<SongRating>(SongRating.class));
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -46,24 +47,21 @@ public class SongRatingServiceDAOImpl implements SongRatingServiceDAO {
 
 	@Override
 	public SongRating addRating(SongRating songRating) {
-		jdbcTemplate.update(
-				"INSERT INTO SongRating (Rating_id, Rating, Song_id) VALUES (?,?,?)",
-				new Object[] { songRating.getRating_id(), songRating.getRating(), songRating.getSong_id()});
+		jdbcTemplate.update("INSERT INTO SongRating (Rating_id, Rating, Song_id) VALUES (?,?,?)",
+				new Object[] { songRating.getRating_id(), songRating.getRating(), songRating.getSong_id() });
 		return songRating;
 	}
 
 	@Override
 	public SongRating updateSongRating(int id, SongRating songRating) {
-		jdbcTemplate.update(
-				"UPDATE SongRating set Rating = ? where Song_id = ?",
-				new Object[] { songRating.getRating(), id});
+		jdbcTemplate.update("UPDATE SongRating set Rating = ? where Song_id = ?",
+				new Object[] { songRating.getRating(), id });
 		return songRating;
 	}
 
 	@Override
 	public void deleteRating(int id) {
-		jdbcTemplate.update("DELETE from SongRating where Rating_id = ?", new Object[] { id });
+		jdbcTemplate.update("DELETE from SongRating where Song_id = ?", new Object[] { id });
 	}
-	
-	
+
 }

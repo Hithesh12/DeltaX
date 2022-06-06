@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.music.model.SongRating;
 
 public interface SongRatingServiceDAO {
-
+	
 	SongRating getRating(int id);
 
 	List<SongRating> getAllRatings();
@@ -15,4 +15,6 @@ public interface SongRatingServiceDAO {
 	public SongRating updateSongRating(int id, SongRating songRating);
 	
 	public void deleteRating(int id);
+	
+	
 }
