@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.music.model.Song;
 import com.example.music.model.SongRating;
 
 @Repository("songRatingServiceDAO")
@@ -25,8 +26,8 @@ public class SongRatingServiceDAOImpl implements SongRatingServiceDAO {
 	public SongRating getRating(int id) {
 		SongRating songRating = null;
 		try {
-			songRating = jdbcTemplate.queryForObject("SELECT * FROM SongRating WHERE Rating_id = ?", new Object[] { id },
-					new BeanPropertyRowMapper<SongRating>(SongRating.class));
+			songRating = jdbcTemplate.queryForObject("SELECT * FROM SongRating WHERE Rating_id = ?",
+					new Object[] { id }, new BeanPropertyRowMapper<SongRating>(SongRating.class));
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -63,5 +64,19 @@ public class SongRatingServiceDAOImpl implements SongRatingServiceDAO {
 	public void deleteRating(int id) {
 		jdbcTemplate.update("DELETE from SongRating where Song_id = ?", new Object[] { id });
 	}
+
+	@Override
+	public List<SongRating> getAllRatings(int id) {
+		List<SongRating> songRatings = null;
+		try {
+			songRatings = jdbcTemplate.query("SELECT * from SongRating WHERE Rating_id = ?",
+					new BeanPropertyRowMapper<SongRating>(SongRating.class));
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		return songRatings;
+	}
+
+	
 
 }

@@ -35,6 +35,7 @@ public class Song {
 	int rating;
 	int user_id;
 	int artist_id;
+	
 	public int getSong_id() {
 		return song_id;
 	}

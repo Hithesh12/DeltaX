@@ -67,4 +67,11 @@ public class SongServiceDAOImpl implements SongServiceDAO {
 		jdbcTemplate.update("DELETE from Song where Song_id = ?", new Object[] { id });
 	}
 
+	@Override
+	public void updateSong(int id, int rating) {
+		jdbcTemplate.update(
+				"UPDATE Song set Rating = ? where Song_id = ?",
+				new Object[] { rating, id});
+	}
+
 }

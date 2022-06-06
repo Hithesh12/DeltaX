@@ -6,12 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.music.DAO.SongRatingServiceDAO;
+import com.example.music.DAO.SongServiceDAO;
 import com.example.music.model.SongRating;
 
 @Service("songRatingService")
 public class SongRatingServiceImpl implements SongRatingService {
+	
 	@Autowired
 	SongRatingServiceDAO songRatingServiceDAO;
+	
+	@Autowired
+	SongServiceDAO songServiceDAO;
 	
 	@Override
 	public SongRating getRating(int id) {
@@ -41,4 +46,12 @@ public class SongRatingServiceImpl implements SongRatingService {
 	public void deleteRating(int id) {
 		songRatingServiceDAO.deleteRating(id);;
 	}
+
+	@Override
+	public List<SongRating> getAllRatings(int id) {
+		List<SongRating> songRating = songRatingServiceDAO.getAllRatings(id);
+		return songRating;
+	}
+	
+	
 }

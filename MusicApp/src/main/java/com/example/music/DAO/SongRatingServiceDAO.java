@@ -6,9 +6,9 @@ import com.example.music.model.SongRating;
 
 public interface SongRatingServiceDAO {
 	
-	SongRating getRating(int id);
+	public SongRating getRating(int id);
 
-	List<SongRating> getAllRatings();
+	public List<SongRating> getAllRatings();
 	
 	public SongRating addRating(SongRating songRating);
 	
@@ -16,5 +16,6 @@ public interface SongRatingServiceDAO {
 	
 	public void deleteRating(int id);
 	
+	public List<SongRating> getAllRatings(int id);
 	
 }

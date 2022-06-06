@@ -15,4 +15,8 @@ public interface SongRatingService {
 	public SongRating updateSongRating(int id, SongRating songRating);
 	
 	public void deleteRating(int id);
+	
+	public List<SongRating> getAllRatings(int id);
+
+	
 }

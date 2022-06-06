@@ -15,5 +15,7 @@ public interface SongServiceDAO {
 	public Song updateSong(int id, Song song);
 	
 	public void deleteSong(int id);
+
+	public void updateSong(int id, int rating);
 	
 }
