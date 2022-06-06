@@ -3,7 +3,6 @@ package com.example.music.DAO;
 import java.util.List;
 
 import com.example.music.model.Artist;
-import com.example.music.model.Song;
 
 public interface ArtistServiceDAO {
 

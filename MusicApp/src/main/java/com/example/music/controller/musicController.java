@@ -1,8 +1,7 @@
 package com.example.music.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,6 @@ public class musicController {
 	
 	@RequestMapping(value = "/songs", method = RequestMethod.POST, headers = "Accept=application/json")
 	public Song addSong(@RequestBody Song song) throws ParseException {
-		
 		return songService.addSong(song);
 	}
 

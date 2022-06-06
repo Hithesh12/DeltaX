@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.music.model.Artist;
-import com.example.music.model.Song;
 
 @Repository("artistServiceDAO")
 public class ArtistServiceDAOImpl implements ArtistServiceDAO{
@@ -37,7 +36,7 @@ public class ArtistServiceDAOImpl implements ArtistServiceDAO{
 	public Artist getArtist(int id) {
 		Artist artist = null;
 		try {
-			artist = jdbcTemplate.queryForObject("SELECT * FROM Artist WHERE Song_id = ?", new Object[] { id },
+			artist = jdbcTemplate.queryForObject("SELECT * FROM Artist WHERE Artist_id = ?", new Object[] { id },
 					new BeanPropertyRowMapper<Artist>(Artist.class));
 		} catch (DataAccessException e) {
 			e.printStackTrace();
@@ -56,13 +55,13 @@ public class ArtistServiceDAOImpl implements ArtistServiceDAO{
 	@Override
 	public Artist updateArtist(int id, Artist artist) {
 		jdbcTemplate.update(
-				"UPDATE Artist set Artist_name = ?, Date_of_birth = ?, Bio = ?, User_id = ? where id = ?",
-				new Object[] { artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio(), artist.getUser_id()});
+				"UPDATE Artist set Artist_name = ?, Date_of_birth = ?, Bio = ?, User_id = ? where Artist_id = ?",
+				new Object[] { artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio(), artist.getUser_id(), id});
 		return artist;
 	}
 
 	@Override
 	public void deleteArtist(int id) {
-		jdbcTemplate.update("DELETE from Artist where id = ?", new Object[] { id });		
+		jdbcTemplate.update("DELETE from Artist where Artist_id = ?", new Object[] { id });		
 	}
 }

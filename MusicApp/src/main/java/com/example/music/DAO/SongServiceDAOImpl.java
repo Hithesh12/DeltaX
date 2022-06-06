@@ -56,15 +56,15 @@ public class SongServiceDAOImpl implements SongServiceDAO {
 	@Override
 	public Song updateSong(int id, Song song) {
 		jdbcTemplate.update(
-				"UPDATE Song set name = ?, Date_of_release = ?, Image = ?, Rating = ?, User_id = ?, Artist_id = ? where id = ?",
+				"UPDATE Song set name = ?, Date_of_release = ?, Image = ?, Rating = ?, User_id = ?, Artist_id = ? where Song_id = ?",
 				new Object[] { song.getName(), song.getDate_of_release(), song.getImage(), song.getRating(),
-						song.getUser_id(), song.getArtist_id() });
+						song.getUser_id(), song.getArtist_id(), id});
 		return song;
 	}
 
 	@Override
 	public void deleteSong(int id) {
-		jdbcTemplate.update("DELETE from Song where id = ?", new Object[] { id });
+		jdbcTemplate.update("DELETE from Song where Song_id = ?", new Object[] { id });
 	}
 
 }

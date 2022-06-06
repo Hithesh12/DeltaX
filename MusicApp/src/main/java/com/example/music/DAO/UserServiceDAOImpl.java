@@ -47,7 +47,7 @@ public class UserServiceDAOImpl implements UserServiceDAO {
 	@Override
 	public User addUser(User user) {
 		jdbcTemplate.update(
-				"INSERT INTO User (name, User_email, Password, Date_of_birth, Security_question, Security_answer) VALUES (?,?,?,?,?,?)",
+				"INSERT INTO User (Name, User_email, Password, Date_of_birth, Security_question, Security_answer) VALUES (?,?,?,?,?,?)",
 				new Object[] { user.getName(), user.getUserEmail(), user.getPassword(), user.getDateOfBirth(), user.getSecurityQuestion(), user.getSecurityAnswer() });
 		return user;
 	}
@@ -55,13 +55,13 @@ public class UserServiceDAOImpl implements UserServiceDAO {
 	@Override
 	public User updateUser(int id, User user) {
 		jdbcTemplate.update(
-				"UPDATE User set name = ?, User_email = ?, Date_of_birth = ?, Security_question = ?, Security_answer = ? where id = ?",
-				new Object[] { user.getName(), user.getUserEmail(), user.getDateOfBirth(), user.getSecurityQuestion(), user.getSecurityAnswer()});
+				"UPDATE User set Name = ?, User_email = ?, Date_of_birth = ?, Security_question = ?, Security_answer = ? where User_id = ?",
+				new Object[] { user.getName(), user.getUserEmail(), user.getDateOfBirth(), user.getSecurityQuestion(), user.getSecurityAnswer(), id});
 		return user;
 	}
 
 	@Override
 	public void deleteUser(int id) {
-		jdbcTemplate.update("DELETE from User where id = ?", new Object[] { id });
+		jdbcTemplate.update("DELETE from User where User_id = ?", new Object[] { id });
 	}
 }

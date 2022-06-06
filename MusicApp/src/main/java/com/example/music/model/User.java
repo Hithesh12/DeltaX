@@ -6,6 +6,8 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Service   
 @Component 
 public class User{
@@ -26,7 +28,10 @@ public class User{
 	String name;
 	String user_email;
 	String password;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	Date date_of_birth;
+	
 	String security_question;
 	String security_answer;
 	

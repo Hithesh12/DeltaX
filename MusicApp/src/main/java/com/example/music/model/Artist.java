@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Service   
 @Component
 public class Artist {
@@ -23,7 +25,10 @@ public class Artist {
 	
 	int artist_id;
 	String artist_name;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	Date date_of_birth;
+	
 	String bio;
 	int user_id;
 	

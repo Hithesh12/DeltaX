@@ -2,9 +2,7 @@ package com.example.music.DAO;
 
 import java.util.List;
 
-import com.example.music.model.Artist;
 import com.example.music.model.Song;
-import com.example.music.model.User;
 
 public interface SongServiceDAO {
 
