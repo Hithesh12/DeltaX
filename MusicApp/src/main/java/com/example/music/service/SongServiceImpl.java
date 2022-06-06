@@ -25,7 +25,7 @@ public class SongServiceImpl implements SongService{
 	
 	@Override
 	public List<Song> getAllSongs() {
-		songHomeScreen();
+		averageRating();
 		List<Song> songs =songServiceDAO.getAllSongs();
 		return songs;
 	}
@@ -58,7 +58,7 @@ public class SongServiceImpl implements SongService{
 		songServiceDAO.updateSong(id, rating);
 	}
 
-	public void songHomeScreen() {
+	public void averageRating() {
 		List<Song> songs =songServiceDAO.getAllSongs();
 		
 		for (Song song : songs) {
