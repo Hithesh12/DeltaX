@@ -60,15 +60,20 @@ public class SongServiceImpl implements SongService{
 
 	public void averageRating() {
 		List<Song> songs =songServiceDAO.getAllSongs();
-		
+		System.out.println(songs.toString());
 		for (Song song : songs) {
+			System.out.println(song.getSong_id()); 
+			
 			List<SongRating> songRatings = songRatingServiceDAO.getAllRatings(song.getSong_id());
+			System.out.println(songRatings.toString());
 			
 			for (SongRating rating : songRatings) {
 				count++;
 				totalRating = totalRating + rating.getRating();
 				average = totalRating/count;
 			}
+			totalRating=0;
+			count=0;
 			songServiceDAO.updateSong(song.getSong_id(), average);
 		}
 	}
