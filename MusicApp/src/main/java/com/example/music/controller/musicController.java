@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,79 +31,95 @@ public class musicController {
 	@Autowired
 	ArtistService artistService;
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/songs", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Song> getSongs() {
 		List<Song> listOfSongs = songService.getAllSongs();
+		System.out.println("List of songs:"+listOfSongs);
 		return listOfSongs;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/songs/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public Song getSong(@PathVariable int id) {
 		return songService.getSong(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/songs", method = RequestMethod.POST, headers = "Accept=application/json")
 	public Song addSong(@RequestBody Song song) throws ParseException {
 		return songService.addSong(song);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/songs/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
 	public Song updateSong(@RequestBody Song song, @PathVariable("id") int id) {
 		return songService.updateSong(id, song);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/songs/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
 	public void deleteSong(@PathVariable("id") int id) {
 		songService.deleteSong(id);
 	}	
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/users", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<User> getUsers() {
 		List<User> listOfUsers = userService.getAllUsers();
 		return listOfUsers;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public User getUser(@PathVariable int id) {
 		return userService.getUser(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/users", method = RequestMethod.POST, headers = "Accept=application/json")
 	public User addUser(@RequestBody User user) throws ParseException {
 		return userService.addUser(user);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
 	public User updateUser(@RequestBody User user, @PathVariable("id") int id) {
 		return userService.updateUser(id, user);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
 	public void deleteUser(@PathVariable("id") int id) {
 		userService.deleteUser(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/artists", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Artist> getArtists() {
 		List<Artist> listOfArtists = artistService.getAllArtists();
 		return listOfArtists;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/artists/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public Artist getArtist(@PathVariable int id) {
 		return artistService.getArtist(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/artists", method = RequestMethod.POST, headers = "Accept=application/json")
 	public Artist addArtist(@RequestBody Artist artist) throws ParseException {
 		return artistService.addArtist(artist);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/artists/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
 	public Artist updateArtist(@RequestBody Artist artist, @PathVariable("id") int id) {
 		return artistService.updateArtist(id, artist);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/artists/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
 	public void deleteArtist(@PathVariable("id") int id) {
 		artistService.deleteArtist(id);

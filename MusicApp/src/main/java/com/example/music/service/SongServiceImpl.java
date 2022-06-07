@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.music.DAO.SongRatingServiceDAO;
 import com.example.music.DAO.SongServiceDAO;
@@ -62,10 +63,10 @@ public class SongServiceImpl implements SongService{
 		List<Song> songs =songServiceDAO.getAllSongs();
 		System.out.println(songs.toString());
 		for (Song song : songs) {
-			System.out.println(song.getSong_id()); 
+			//System.out.println(song.getSong_id()); 
 			
 			List<SongRating> songRatings = songRatingServiceDAO.getAllRatings(song.getSong_id());
-			System.out.println(songRatings.toString());
+			//System.out.println(songRatings.toString());
 			
 			for (SongRating rating : songRatings) {
 				count++;
