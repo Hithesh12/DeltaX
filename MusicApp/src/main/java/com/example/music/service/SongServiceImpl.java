@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.music.DAO.SongRatingServiceDAO;
 import com.example.music.DAO.SongServiceDAO;
 import com.example.music.model.Song;
+import com.example.music.model.SongList;
 import com.example.music.model.SongRating;
 
 @Service("songService")
@@ -76,5 +77,11 @@ public class SongServiceImpl implements SongService{
 			count=0;
 			songServiceDAO.updateSong(song.getSong_id(), average);
 		}
+	}
+
+	@Override
+	public List<SongList> getSongList() {
+		List<SongList> songList =songServiceDAO.getSongList();
+		return songList;
 	}
 }

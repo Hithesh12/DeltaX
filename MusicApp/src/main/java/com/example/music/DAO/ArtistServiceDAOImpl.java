@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.music.model.Artist;
+import com.example.music.model.ArtistList;
 
 @Repository("artistServiceDAO")
 public class ArtistServiceDAOImpl implements ArtistServiceDAO{
@@ -63,5 +64,24 @@ public class ArtistServiceDAOImpl implements ArtistServiceDAO{
 	@Override
 	public void deleteArtist(int id) {
 		jdbcTemplate.update("DELETE from Artist where Artist_id = ?", new Object[] { id });		
+	}
+
+	@Override
+	public List<ArtistList> getArtistList() {
+		List<ArtistList> artistList = null;
+		try {
+			artistList = jdbcTemplate.query("SELECT `a`.`Artist_id`,\r\n"
+					+ "       `a`.`Artist_name`,\r\n"
+					+ "        GROUP_CONCAT(`s`.`name`) `songs`\r\n"
+					+ "FROM `association` \r\n"
+					+ "JOIN `artist` a ON `a`.`Artist_id`=`association`.`Artist_id`\r\n"
+					+ "JOIN `song` s ON `s`.`Song_id`=`association`.`Song_id`\r\n"
+					+ "GROUP BY `a`.`Artist_id`,\r\n"
+					+ "         `a`.`Artist_name`;", new BeanPropertyRowMapper<ArtistList>(ArtistList.class));
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		System.out.println(artistList.toString());
+		return artistList;
 	}
 }

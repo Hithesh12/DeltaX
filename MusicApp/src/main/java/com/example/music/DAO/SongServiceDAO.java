@@ -3,6 +3,7 @@ package com.example.music.DAO;
 import java.util.List;
 
 import com.example.music.model.Song;
+import com.example.music.model.SongList;
 
 public interface SongServiceDAO {
 
@@ -17,5 +18,7 @@ public interface SongServiceDAO {
 	public void deleteSong(int id);
 
 	public void updateSong(int id, int rating);
+
+	public List<SongList> getSongList();
 	
 }

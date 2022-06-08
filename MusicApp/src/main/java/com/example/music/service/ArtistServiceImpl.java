@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.music.DAO.ArtistServiceDAO;
 import com.example.music.model.Artist;
+import com.example.music.model.ArtistList;
 
 @Service("artistService")
 public class ArtistServiceImpl implements ArtistService {
@@ -40,5 +41,12 @@ public class ArtistServiceImpl implements ArtistService {
 	@Override
 	public void deleteArtist(int id) {
 		artistServiceDAO.deleteArtist(id);
+	}
+
+	@Override
+	public List<ArtistList> getArtistList() {
+		List<ArtistList> artistList = artistServiceDAO.getArtistList();
+		System.out.println(artistList.toString());
+		return artistList;
 	}
 }

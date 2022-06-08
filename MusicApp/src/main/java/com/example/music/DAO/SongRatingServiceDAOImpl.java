@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.music.model.ArtistList;
 import com.example.music.model.SongRating;
 
 @Repository("songRatingServiceDAO")
@@ -76,6 +77,5 @@ public class SongRatingServiceDAOImpl implements SongRatingServiceDAO {
 		return songRatings;
 	}
 
-	
 
 }

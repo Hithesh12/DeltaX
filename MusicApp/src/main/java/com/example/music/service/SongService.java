@@ -3,6 +3,7 @@ package com.example.music.service;
 import java.util.List;
 
 import com.example.music.model.Song;
+import com.example.music.model.SongList;
 
 public interface SongService {
 
@@ -17,4 +18,7 @@ public interface SongService {
 	public void deleteSong(int id);
 	
 	public void updateRating(int id, int rating);
+	
+	public List<SongList> getSongList();
+
 }

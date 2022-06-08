@@ -13,20 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.music.model.Artist;
+import com.example.music.model.ArtistList;
 import com.example.music.model.Song;
-import com.example.music.model.User;
+import com.example.music.model.SongList;
 import com.example.music.service.ArtistService;
 import com.example.music.service.SongService;
-import com.example.music.service.UserService;
 
 @RestController
 public class musicController {
 
 	@Autowired
 	SongService songService;
-	
-	@Autowired
-	UserService userService;
 	
 	@Autowired
 	ArtistService artistService;
@@ -63,36 +60,6 @@ public class musicController {
 		songService.deleteSong(id);
 	}	
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/users", method = RequestMethod.GET, headers = "Accept=application/json")
-	public List<User> getUsers() {
-		List<User> listOfUsers = userService.getAllUsers();
-		return listOfUsers;
-	}
-	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public User getUser(@PathVariable int id) {
-		return userService.getUser(id);
-	}
-	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/users", method = RequestMethod.POST, headers = "Accept=application/json")
-	public User addUser(@RequestBody User user) throws ParseException {
-		return userService.addUser(user);
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
-	public User updateUser(@RequestBody User user, @PathVariable("id") int id) {
-		return userService.updateUser(id, user);
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
-	public void deleteUser(@PathVariable("id") int id) {
-		userService.deleteUser(id);
-	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/artists", method = RequestMethod.GET, headers = "Accept=application/json")
@@ -125,4 +92,17 @@ public class musicController {
 		artistService.deleteArtist(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/songList", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<SongList> getSongList() {
+		List<SongList> songList = songService.getSongList();
+		return songList;
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/artistList", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<ArtistList> getArtistList() {
+		List<ArtistList> artistList = artistService.getArtistList();
+		return artistList;
+	}
 }

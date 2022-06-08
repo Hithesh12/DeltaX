@@ -17,5 +17,5 @@ public interface SongRatingServiceDAO {
 	public void deleteRating(int id);
 	
 	public List<SongRating> getAllRatings(int id);
-	
+
 }

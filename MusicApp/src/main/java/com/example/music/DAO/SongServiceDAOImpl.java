@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.music.model.Song;
+import com.example.music.model.SongList;
 
 @Repository("songServiceDAO")
 public class SongServiceDAOImpl implements SongServiceDAO {
@@ -73,4 +74,24 @@ public class SongServiceDAOImpl implements SongServiceDAO {
 				new Object[] { rating, id});
 	}
 
+	@Override
+	public List<SongList> getSongList() {
+		List<SongList> songList = null;
+		try {
+			songList = jdbcTemplate.query("SELECT `s`.`song_id`,\r\n"
+					+ "       `s`.`name`,\r\n"
+					+ "       `s`.rating,\r\n"
+					+ "        GROUP_CONCAT(`a`.`Artist_name`) `artists`\r\n"
+					+ "FROM `association` \r\n"
+					+ "JOIN `song` s ON `s`.`Song_id`=`association`.`Song_id`\r\n"
+					+ "JOIN `artist` a ON `a`.`Artist_id`=`association`.`Artist_id`\r\n"
+					+ "GROUP BY `s`.`Song_id`,\r\n"
+					+ "         `s`.`name`;", new BeanPropertyRowMapper<SongList>(SongList.class));
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		System.out.println(songList.toString());
+		return songList;
+	}
+	
 }
