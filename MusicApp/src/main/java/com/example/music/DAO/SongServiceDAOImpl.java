@@ -81,6 +81,7 @@ public class SongServiceDAOImpl implements SongServiceDAO {
 			songList = jdbcTemplate.query("SELECT `s`.`song_id`,\r\n"
 					+ "       `s`.`name`,\r\n"
 					+ "       `s`.rating,\r\n"
+					+ "       `s`.Date_of_release,\r\n"
 					+ "        GROUP_CONCAT(`a`.`Artist_name`) `artists`\r\n"
 					+ "FROM `association` \r\n"
 					+ "JOIN `song` s ON `s`.`Song_id`=`association`.`Song_id`\r\n"
