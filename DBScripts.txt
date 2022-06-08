@@ -1,0 +1,103 @@
+CREATE TABLE `Song` (
+     `Song_id` int(11) NOT NULL AUTO_INCREMENT,
+     `name` varchar(25) NOT NULL,
+     `Date_of_release` date NOT NULL,
+     `Image` blob,
+     `Rating` int(5) NOT NULL,
+     PRIMARY KEY (`Song_id`)
+     );
+
+CREATE TABLE `Artist` (
+       `Artist_id` int(11) NOT NULL AUTO_INCREMENT,
+       `Artist_name` varchar(25) NOT NULL,
+       `Date_of_birth` date NOT NULL,
+       `Bio` varchar(250) NOT NULL,
+       PRIMARY KEY (`Artist_id`)
+       );
+
+CREATE TABLE `Association` (
+      `Association_id` int(11) NOT NULL AUTO_INCREMENT,
+      `Song_id` int(11) NOT NULL,
+      `Artist_id` int(11) NOT NULL,
+       PRIMARY KEY (`Association_id`),
+       FOREIGN KEY (`Song_id`) REFERENCES Song(`Song_id`),
+       FOREIGN KEY (`Artist_id`) REFERENCES Artist(`Artist_id`)
+       );
+
+INSERT INTO song VALUES (1, 'Shershah', '2021-08-12', NULL, 3);
+INSERT INTO song VALUES (2, 'Laxmii', '2020-11-09', NULL, 2);
+INSERT INTO song VALUES (3, 'Indoo Ki Jawani', '2020-12-20', NULL, 1);
+INSERT INTO song VALUES (4, 'Bhool Bhulaiyaa 2', '2021-11-19', NULL, 2);
+INSERT INTO song VALUES (5, 'Marjaavaan', '2019-11-15', NULL, 3);
+INSERT INTO song VALUES (6, 'Good Newwz', '2019-12-27', NULL, 4);
+INSERT INTO song VALUES (7, 'Ek Villain 2', '2022-07-22', NULL, 5);
+INSERT INTO song VALUES (8, 'Janhit Mein Jaari', '2022-06-10', NULL, 2);
+INSERT INTO song VALUES (9, 'Dear Dia', '2022-06-10', NULL, 3);
+INSERT INTO song VALUES (10, 'Ardh', '2022-06-10', NULL, 4);
+INSERT INTO song VALUES (11, 'Nikamma', '2022-06-17', NULL, 5);
+
+INSERT INTO artist VALUES (1, 'Hithesh Dinesh', '1998-10-12', '');
+INSERT INTO artist VALUES (2, 'Shashi Kumar', '1998-04-04',  '');
+INSERT INTO artist VALUES (3, 'Savan Bangera', '1998-04-23',  '');
+INSERT INTO artist VALUES (4, 'Shefali Sheena', '1997-10-09',  '');
+INSERT INTO artist VALUES (5, 'Thanvi Chandrashekar', '1997-06-18',  '');
+INSERT INTO artist VALUES (6, 'Gautham Prasad', '1996-07-27',  '');
+INSERT INTO artist VALUES (7, 'Dhanush Poojary', '1999-01-15',  '');
+INSERT INTO artist VALUES (8, 'Prajwal Nayak', '1998-06-10',  '');
+INSERT INTO artist VALUES (9, 'Manish Poojary', '1996-09-10',  '');
+INSERT INTO artist VALUES (10, 'Pavan Kumar', '1998-12-10',  '');
+INSERT INTO artist VALUES (11, 'Rhea Pereira', '1998-01-18',  '');
+
+INSERT INTO association VALUES (1, 1, 2 );
+INSERT INTO association VALUES (2, 1, 10 );
+INSERT INTO association VALUES (3, 6, 7 );
+INSERT INTO association VALUES (4, 5, 7 );
+INSERT INTO association VALUES (5, 3, 5 );
+INSERT INTO association VALUES (6, 4, 9 );
+INSERT INTO association VALUES (7, 4, 8 );
+INSERT INTO association VALUES (8, 9, 5 );
+INSERT INTO association VALUES (9, 10, 1 );
+INSERT INTO association VALUES (10, 2, 1 );
+INSERT INTO association VALUES (11, 6, 11 );
+
+SELECT `a`.`Artist_id`,
+       `a`.`Artist_name`,
+        GROUP_CONCAT(`s`.`name`) `song`
+FROM `association` 
+JOIN `artist` a ON `a`.`Artist_id`=`association`.`Artist_id`
+JOIN `song` s ON `s`.`Song_id`=`association`.`Song_id`
+GROUP BY `a`.`Artist_id`,
+         `a`.`Artist_name`;
+
+SELECT `s`.`song_id`,
+       `s`.`name`,
+       `s`.rating,
+        GROUP_CONCAT(`a`.`Artist_name`) `artist`
+FROM `association` 
+JOIN `song` s ON `s`.`Song_id`=`association`.`Song_id`
+JOIN `artist` a ON `a`.`Artist_id`=`association`.`Artist_id`
+GROUP BY `s`.`Song_id`,
+         `s`.`name`;
+
+SELECT * from Artist
+
+SELECT * FROM Artist WHERE Artist_id = ?
+
+INSERT INTO Artist (Artist_name, Date_of_birth, Bio)VALUES (?,?,?)
+
+UPDATE Artist set Artist_name = ?, Date_of_birth = ?, Bio = ? where Artist_id = ?
+
+DELETE from Artist where Artist_id = ?
+
+SELECT * from Song
+
+SELECT * FROM Song WHERE Song_id = ?
+
+INSERT INTO Song (name, Date_of_release, Image, Rating)VALUES (?,?,?,?)
+
+UPDATE Song set name = ?, Date_of_release = ?, Image = ?, Rating = ? where Song_id = ?
+
+DELETE from Song where Song_id = ?
+
+UPDATE Song set Rating = ? where Song_id = ?
+
