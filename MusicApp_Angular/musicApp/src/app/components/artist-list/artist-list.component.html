@@ -1,1 +1,15 @@
-<p>artist-list works!</p>
+<table class="table table-striped">
+    <thead class="thead-dark ">
+        <tr>
+            <th scope="col">Artist name</th>
+            <th scope="col">Songs</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let artist of allArtists;">
+            <td>{{artist.artist_name}}</td>
+            <td>{{artist.songs}}</td>
+          </tr>
+    </tbody>
+
+</table>

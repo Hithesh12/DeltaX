@@ -3,7 +3,7 @@
         <tr>
             <th scope="col">Song name</th>
             <th scope="col">Date of release</th>
-            <th scope="col">Artist</th>
+            <th scope="col">Artists</th>
             <th scope="col">Rating</th>
           </tr>
     </thead>
@@ -11,17 +11,9 @@
         <tr *ngFor="let song of allSongs;">
             <td>{{song.name}}</td>
             <td>{{song.date_of_release}}</td>
-            <td>{{song.artist_id}}</td>
+            <td>{{song.artists}}</td>
             <td>{{song.rating}}</td>
           </tr>
     </tbody>
 
 </table>
-<!--div>
-    <div *ngFor="let song of allSongs;">
-        <span> {{song.name}} </span>
-        <span> {{song.date_of_release}} </span>
-        <span> {{song.rating}} </span>
-        <span> {{getArtistById(song.artist_id)}}</span>
-    </div>
-</div-->

@@ -3,5 +3,4 @@ export interface Artist{
     artist_name: string;
     date_of_birth: Date;
     bio: string;
-    user_id: number;
 }

@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
-import { Artist } from '../model/artist';
-import { MUSIFY_GET_ARTIST_BY_ID_URL } from '../urls';
+import { ArtistList } from '../model/artistList';
+import { MUSIFY_GET_ALL_ARTISTS_URL } from '../urls';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +27,8 @@ export class ArtistServiceService {
     return throwError("Error occured at rest API call");
   }
   
-  getArtistById(id: number){
-    console.log("Artist ID:"+id);
-    return this.http.get<Artist>(MUSIFY_GET_ARTIST_BY_ID_URL + id).pipe(
-      //retry(1),
-      catchError(this.errorHandle)
-    );
+  getAllArtists(){
+    return this.http.get<ArtistList[]>(MUSIFY_GET_ALL_ARTISTS_URL);
   }
 
 }

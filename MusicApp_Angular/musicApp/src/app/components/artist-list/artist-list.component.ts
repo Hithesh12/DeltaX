@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Artist } from 'src/app/model/artist';
+import { ArtistList } from 'src/app/model/artistList';
 import { ArtistServiceService } from 'src/app/services/artist-service.service';
 
 @Component({
@@ -10,18 +10,19 @@ import { ArtistServiceService } from 'src/app/services/artist-service.service';
 export class ArtistListComponent implements OnInit {
 
   constructor(private artistService : ArtistServiceService) { }
-  artist:Artist | undefined;
-  getArtist:Artist | undefined;
+  allArtists: ArtistList[] = [];
   
   ngOnInit(): void {
+    this.getAllArtists();
   }
 
-  getArtistById(id:number) {
-    this.artistService.getArtistById(id).subscribe(
+  getAllArtists() {
+    this.artistService.getAllArtists().subscribe(
       (response) => {
-        this.artist = <Artist>response;
+        this.allArtists = <ArtistList[]>response;
       }
     )
-    console.log(this.artist);
+    console.log(this.allArtists);
   }
+
 }

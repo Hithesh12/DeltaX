@@ -1,7 +1,7 @@
-export interface Song{
+export interface SongList{
     song_id: number;
     name: string;
     date_of_release: Date;
-    image: Blob;
     rating: number;
+    artists: String;
 }
