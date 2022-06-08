@@ -13,13 +13,20 @@ import { MatMenuModule } from '@angular/material/menu';
 import { SongListComponent } from './components/song-list/song-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { AddSongComponent } from './components/add-song/add-song.component';
+import { AddArtistComponent } from './components/add-artist/add-artist.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     SongListComponent,
-    ArtistListComponent
+    ArtistListComponent,
+    AddSongComponent,
+    AddArtistComponent
   ],
   imports: [
     BrowserModule,
@@ -30,10 +37,15 @@ import { ArtistListComponent } from './components/artist-list/artist-list.compon
     MatIconModule,
     MatMenuModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    NgxStarRatingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    ArtistListComponent],
+    ArtistListComponent,
+    FormBuilder
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

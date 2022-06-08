@@ -1,0 +1,43 @@
+<form [formGroup]="mainForm">
+    <br />
+    <div class="form-group">
+        <label for="exampleFormControlInput1"><span id="exampleFormControlInput1">Song name</span></label>
+        <input type="text" class="form-control" placeholder="Enter song name" formControlName="songName">
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label for="exampleFormControlInput2"><span id="exampleFormControlInput2">Release Date</span></label>
+        <input type="date" class="form-control" placeholder="Enter release date" formControlName="releaseDate">
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <form [formGroup]="form">
+            <label for="exampleFormControlInput3"><span id="exampleFormControlInput3">Rating
+                    <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
+                </span>
+            </label>
+            <div>Rating: {{form.value.rating}}</div>
+        </form>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <select class="custom-select">
+            <option selected>Artists</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+    </div>
+
+    <br/>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="reset" class="btn btn-primary">Reset</button>
+</form>

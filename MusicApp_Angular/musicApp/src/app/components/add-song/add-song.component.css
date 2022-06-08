@@ -1,0 +1,11 @@
+#exampleFormControlInput1, 
+#exampleFormControlInput2,
+#exampleFormControlInput3{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.4cm;
+}
+
+.form-control{
+    font-style: italic;
+}
