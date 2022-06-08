@@ -47,18 +47,17 @@ public class SongServiceDAOImpl implements SongServiceDAO {
 	@Override
 	public Song addSong(Song song) {
 		jdbcTemplate.update(
-				"INSERT INTO Song (name, Date_of_release, Image, Rating, User_id, Artist_id)VALUES (?,?,?,?,?,?)",
-				new Object[] { song.getName(), song.getDate_of_release(), song.getImage(), song.getRating(),
-						song.getUser_id(), song.getArtist_id() });
+				"INSERT INTO Song (name, Date_of_release, Image, Rating)VALUES (?,?,?,?)",
+				new Object[] { song.getName(), song.getDate_of_release(), song.getImage(), song.getRating()});
 		return song;
 	}
 
 	@Override
 	public Song updateSong(int id, Song song) {
 		jdbcTemplate.update(
-				"UPDATE Song set name = ?, Date_of_release = ?, Image = ?, Rating = ?, User_id = ?, Artist_id = ? where Song_id = ?",
+				"UPDATE Song set name = ?, Date_of_release = ?, Image = ?, Rating = ? where Song_id = ?",
 				new Object[] { song.getName(), song.getDate_of_release(), song.getImage(), song.getRating(),
-						song.getUser_id(), song.getArtist_id(), id});
+						 id});
 		return song;
 	}
 

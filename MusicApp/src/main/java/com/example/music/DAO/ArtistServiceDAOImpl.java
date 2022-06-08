@@ -47,16 +47,16 @@ public class ArtistServiceDAOImpl implements ArtistServiceDAO{
 	@Override
 	public Artist addArtist(Artist artist) {
 		jdbcTemplate.update(
-				"INSERT INTO Artist (Artist_name, Date_of_birth, Bio, User_id)VALUES (?,?,?,?)",
-				new Object[] {artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio(), artist.getUser_id()});
+				"INSERT INTO Artist (Artist_name, Date_of_birth, Bio)VALUES (?,?,?)",
+				new Object[] {artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio()});
 		return artist;
 	}
 
 	@Override
 	public Artist updateArtist(int id, Artist artist) {
 		jdbcTemplate.update(
-				"UPDATE Artist set Artist_name = ?, Date_of_birth = ?, Bio = ?, User_id = ? where Artist_id = ?",
-				new Object[] { artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio(), artist.getUser_id(), id});
+				"UPDATE Artist set Artist_name = ?, Date_of_birth = ?, Bio = ? where Artist_id = ?",
+				new Object[] { artist.getArtist_name(), artist.getDate_of_birth(), artist.getBio(), id});
 		return artist;
 	}
 

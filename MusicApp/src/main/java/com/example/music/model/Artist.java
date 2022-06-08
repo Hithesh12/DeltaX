@@ -17,9 +17,7 @@ public class Artist {
        `Artist_name` varchar(25) NOT NULL,
        `Date_of_birth` date NOT NULL,
        `Bio` varchar(250) NOT NULL,
-       `User_id` int(11),
-       PRIMARY KEY (`Artist_id`),
-       FOREIGN KEY (`User_id`) REFERENCES User(`User_id`)
+       PRIMARY KEY (`Artist_id`)
        );
 	 */
 	
@@ -30,7 +28,6 @@ public class Artist {
 	Date date_of_birth;
 	
 	String bio;
-	int user_id;
 	
 	public int getArtist_id() {
 		return artist_id;
@@ -56,18 +53,11 @@ public class Artist {
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-	public int getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
-	
 	
 	@Override
 	public String toString() {
 		return "Artist [artist_id=" + artist_id + ", artist_name=" + artist_name + ", date_of_birth=" + date_of_birth
-				+ ", bio=" + bio + ", user_id=" + user_id + "]";
+				+ ", bio=" + bio + "]";
 	}
 		
 }
