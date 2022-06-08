@@ -1,0 +1,26 @@
+<!--button (click)="getAllSongs()">test</button-->
+
+<div class="example-container mat-elevation-z8">
+    <!--mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Song Id </mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.name}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      
+    </mat-table-->
+    
+</div>
+
+
+<div>
+    <div *ngFor="let song of allSongs;">
+        <div>{{song.song_id}}</div>
+        <div>{{song.name}}</div>
+        <div>{{song.date_of_release}}</div>
+        <div>{{song.rating}}</div>
+        <div>{{song.user_id}}</div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div>
+    <mat-toolbar id="firstLine">
+      <mat-toolbar-row>
+        <h2>Musify</h2>
+        <span class="example-spacer"></span>
+        <span *ngIf="userAuthenticated()" id="getUser">{{getCurrentUser()}}</span> 
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <div id="mainContent">
+      <div id="songList">
+        <app-song-list></app-song-list>
+      </div>
+      <div id="artistList">
+  
+      </div>
+    </div>
+  </div>

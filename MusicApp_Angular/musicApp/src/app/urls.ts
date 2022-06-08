@@ -1,0 +1,1 @@
+export const MUSIFY_GET_ALL_SONGS_URL = "http://localhost:8080/MusicApp/songs";
