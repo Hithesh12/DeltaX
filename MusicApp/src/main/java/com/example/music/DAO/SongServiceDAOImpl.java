@@ -91,7 +91,6 @@ public class SongServiceDAOImpl implements SongServiceDAO {
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
-		System.out.println(songList.toString());
 		return songList;
 	}
 	

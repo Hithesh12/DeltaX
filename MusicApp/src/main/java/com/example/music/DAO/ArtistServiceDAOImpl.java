@@ -81,7 +81,6 @@ public class ArtistServiceDAOImpl implements ArtistServiceDAO{
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
-		System.out.println(artistList.toString());
 		return artistList;
 	}
 }
