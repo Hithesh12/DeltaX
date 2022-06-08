@@ -1,18 +1,24 @@
-<div>
-    <mat-toolbar id="firstLine">
-      <mat-toolbar-row>
-        <h2>Musify</h2>
-        <span class="example-spacer"></span>
-        <span *ngIf="userAuthenticated()" id="getUser">{{getCurrentUser()}}</span> 
-      </mat-toolbar-row>
-    </mat-toolbar>
-  
-    <div id="mainContent">
-      <div id="songList">
-        <app-song-list></app-song-list>
-      </div>
-      <div id="artistList">
-  
-      </div>
+<nav class="navbar navbar-light bg-dark" >
+  <span class="navbar-text" >
+    <h2 class="title"> &nbsp;&nbsp;&nbsp;&nbsp;Musify</h2>
+  </span>
+  <!--span class="example-spacer"></span>
+  <span *ngIf="userAuthenticated()" id="getUser">{{getCurrentUser()}}</span-->
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="topSongs">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="topSongs">Top Songs</a>
+      <a class="nav-item nav-link" href="topArtists">Top Artists</a>
+      <a class="nav-item nav-link" href="addSong">Add Song</a>
+      <a class="nav-item nav-link" href="addArtist">Add Artist</a>
     </div>
   </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,22 +1,21 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
-import { Song } from '../model/song';
-import { MUSIFY_GET_ALL_SONGS_URL } from '../urls';
+import { catchError, retry, throwError } from 'rxjs';
+import { Artist } from '../model/artist';
+import { MUSIFY_GET_ARTIST_BY_ID_URL } from '../urls';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SongServiceService {
-
+export class ArtistServiceService {
   constructor(private http: HttpClient) { }
 
-  httpOptions(){
+  httpOptions() {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   }
-  
+
   private errorHandle(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('An Error occured at ::', error.error.message);
@@ -27,10 +26,13 @@ export class SongServiceService {
     }
     return throwError("Error occured at rest API call");
   }
-
-  getAllSongs(){
-    return this.http.get<Song[]>(MUSIFY_GET_ALL_SONGS_URL);
+  
+  getArtistById(id: number){
+    console.log("Artist ID:"+id);
+    return this.http.get<Artist>(MUSIFY_GET_ARTIST_BY_ID_URL + id).pipe(
+      //retry(1),
+      catchError(this.errorHandle)
+    );
   }
-
 
 }

@@ -4,7 +4,11 @@ import { SongListComponent } from './components/song-list/song-list.component';
 
 
 const routes: Routes = [
-  { path: 'songlist', component: SongListComponent}
+  { path: 'topSongs', component: SongListComponent},
+  { path: '', component: SongListComponent},
+  { path: 'topArtists', component: SongListComponent},
+  { path: 'addSong', component: SongListComponent},
+  { path: 'addArtist', component: SongListComponent}
 ];
 
 @NgModule({

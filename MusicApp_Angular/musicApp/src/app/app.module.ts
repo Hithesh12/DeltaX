@@ -12,12 +12,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { SongListComponent } from './components/song-list/song-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { ArtistListComponent } from './components/artist-list/artist-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    SongListComponent
+    SongListComponent,
+    ArtistListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [
+    ArtistListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
